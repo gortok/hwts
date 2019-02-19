@@ -1,0 +1,14 @@
+{
+  "name": "hwts",
+  "version": "1.0.0",
+  "main": "sass/site.scss",
+  "license": "BSD-3",
+  "devDependencies": {
+    "bulma": "^0.7.2",
+    "node-sass": "^4.9.2"
+  },
+    "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/site.scss css/site.min.css --output-style compressed",
+    "start": "npm run css-build"
+  }
+}
