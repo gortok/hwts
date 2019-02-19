@@ -2,3 +2,6 @@ version: '3'
 services:
   hwts:
     build: .
+    ports:
+      - "443:443"
+      - "80:80"
