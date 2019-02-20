@@ -1,27 +1,172 @@
-@charset "utf-8";
-@import "../node_modules/bulma/bulma.sass";
-// Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+/*! bulmaswatch v0.7.2 | MIT License */
+////////////////////////////////////////////////
+// LUX
+////////////////////////////////////////////////
+$grey: #7f888f;
+$grey-light:   lighten($grey, 10%);
+$grey-lighter: lighten($grey, 20%);
 
+$green:        #4BBF73;
+$blue:         #1F9BCF;
+$red:          #d9534f;
 
-$primary: $grey-darker;
+$primary: #222 !default;
 $link: $grey;
-$info: $cyan;
-$success: $green;
-$warning: $yellow;
-$danger: $red;
-$dark: $grey-darker;
-$text: $grey-dark;
-$background: $white-ter;
 
-// Import only what you need from Bulma
+$family-sans-serif: "Nunito Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$body-size: 14px;
 
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/elements/_all.sass";
-@import "../node_modules/bulma/sass/components/_all.sass";
-@import "../node_modules/bulma/sass/grid/_all.sass";
-@import "../node_modules/bulma/sass/layout/_all.sass"
+$radius: 0;
+$radius-small: $radius;
 
+$navbar-height: 5rem;
+$navbar-background-color: $primary;
+$navbar-item-color: $grey;
+$navbar-item-hover-color: #fff;
+$navbar-item-active-color: #fff;
+$navbar-item-hover-background-color: transparent;
+$navbar-item-active-background-color: transparent;
+$navbar-dropdown-arrow: #fff;
+$navbar-dropdown-background-color: $primary;
+$navbar-dropdown-border-top: 1px solid lighten($primary, 10);
+$navbar-divider-background-color: lighten($primary, 10);
+$navbar-dropdown-item-active-color: #fff;
+$navbar-dropdown-item-hover-color: $grey-lighter;
+$navbar-dropdown-item-hover-background-color: transparent;
+$navbar-dropdown-item-active-background-color: transparent;
 
+$bulmaswatch-import-font: true !default;
 
+$box-shadow: 0 0 0 1px $grey-lighter;
+@import "../node_modules/bulma/bulma.sass";
+// Overrides
+@if $bulmaswatch-import-font {
+    @import url(https://fonts.googleapis.com/css?family=Nunito+Sans);
+}
+
+body {
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.button {
+  transition: all 200ms ease;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  &.is-active,
+  &.is-focused,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($button-focus-border-color, 0.25);
+  }
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      &.is-active,
+      &.is-focused,
+      &:active,
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 2px rgba($color, 0.25);
+      }
+    }
+  }
+}
+
+.button,
+.input,
+.pagination-ellipsis,
+.pagination-link,
+.pagination-next,
+.pagination-previous,
+.select,
+.select select,
+.textarea,
+.control.has-icons-left .icon,
+.control.has-icons-right .icon {
+  height: 2.5em;
+}
+
+.input,
+.textarea {
+  transition: all 200ms ease;
+  box-shadow: none;
+}
+
+.progress,
+.tag {
+  border-radius: $radius;
+}
+
+.card {
+  box-shadow: 0 0 0 1px $grey-lighter;
+
+  .card-header {
+    box-shadow: 0 1px 0 0 $grey-lighter;
+  }
+}
+
+.navbar {
+  .navbar-link,
+  .navbar-item {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .has-dropdown .navbar-item {
+    text-transform: none;
+  }
+
+  strong {
+    color: $white;
+  }
+
+  @include touch {
+    .navbar-menu {
+      background-color: $primary;
+      border-radius: $radius;
+    }
+  }
+}
+.hero {
+  .navbar {
+    background-color: $navbar-background-color;
+  }
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      .navbar {
+        background-color: $color;
+      }
+    }
+  }
+}
+
+.notification {
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      a:not(.button) {
+        color: $color-invert;
+        text-decoration: underline;
+      }
+    }
+  }
+}
