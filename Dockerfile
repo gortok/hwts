@@ -4,6 +4,7 @@ RUN mkdir -p /usr/src/app/css
 WORKDIR /usr/src/app
 COPY package*.json ./
 COPY ./scss/site.scss ./sass/site.scss
+COPY ./css/modal-fx.min.css /usr/src/app/css
 RUN npm install
 RUN npm start
 CMD cat ./css/site.min.css
@@ -29,6 +30,7 @@ COPY --from=cert-gen /work/localhost.crt /etc/ssl/
 COPY --from=cert-gen /work/localhost.crt /usr/local/share/ca-certificates/localhost.crt
 COPY --from=cert-gen /work/localhost.pem /etc/ssl/
 COPY --from=build /usr/src/app/css/site.min.css /var/www/css
+COPY --from=build /usr/src/app/css/modal-fx.min.css /var/www/css
 ADD html /var/www/html
 RUN chmod -R 0755 /var/www
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
