@@ -6,10 +6,11 @@ $grey: #7f888f;
 $grey-light:   lighten($grey, 10%);
 $grey-lighter: lighten($grey, 20%);
 
+$hollow-wall-blue: #196EB5;
 $green:        #4BBF73;
-$blue:         #1F9BCF;
+$blue :        $hollow-wall-blue;
 $red:          #d9534f;
-
+$info:         $hollow-wall-blue;
 $primary: #222 !default;
 $link: $grey;
 
@@ -27,6 +28,7 @@ $navbar-item-active-color: #fff;
 $navbar-item-hover-background-color: transparent;
 $navbar-item-active-background-color: transparent;
 $navbar-dropdown-arrow: #fff;
+$navbar-item-img-max-height: 3.75rem;
 $navbar-dropdown-background-color: $primary;
 $navbar-dropdown-border-top: 1px solid lighten($primary, 10);
 $navbar-divider-background-color: lighten($primary, 10);
@@ -49,6 +51,9 @@ body {
   letter-spacing: 1px;
 }
 
+.padded-left {
+ padding-left: 1rem;
+}
 h1,
 h2,
 h3,

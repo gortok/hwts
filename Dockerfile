@@ -32,6 +32,7 @@ COPY --from=cert-gen /work/localhost.pem /etc/ssl/
 COPY --from=build /usr/src/app/css/site.min.css /var/www/css
 COPY --from=build /usr/src/app/css/modal-fx.min.css /var/www/css
 ADD html /var/www/html
+ADD images /var/www/images
 RUN chmod -R 0755 /var/www
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 RUN update-ca-certificates
